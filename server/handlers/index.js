@@ -1,5 +1,6 @@
 module.exports = {
-    ...require('./auth')
+    ...require('./auth'),
+    ...require('./poll')
 }
 
 
@@ -12,6 +13,6 @@ module.exports.notFound = (req, res, next) => {
 
 module.exports.errors = (err, req, res, next) => {
   res
-    .status(err.status || 500)
+    .status(err.status || 400)
     .json({ err: err.message || "Something went wrong" });
 }; //final endpoint express hits before server crashes (if it crashes)
